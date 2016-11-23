@@ -1,6 +1,30 @@
-<h1>{{title}}</h1>
-        <nav>
-            <a routerLink="/">Dashboard</a>
-            <a routerLink="/heroes">Heroes</a>
-        </nav>
-<router-outlet></router-outlet>
+<md-sidenav-layout [class.m2app-candy]="isDarkTheme">
+
+    <md-sidenav #sidenav mode="side" class="app-sidenav">
+        <md-card>
+            <md-list class="app-nav">
+                <md-list-item>
+                    <button md-raised-button color="accent" routerLink="/"><i class="material-icons app-input-icon">face</i>Dashboard</button>
+
+                </md-list-item>
+                <md-list-item>
+                    <button md-raised-button color="accent" routerLink="/heroes"><i class="material-icons app-input-icon">alarm</i>Heroes</button>
+                </md-list-item>
+            </md-list>
+        </md-card>
+    </md-sidenav>
+    <md-toolbar color="primary">
+        <button class="app-icon-button" (click)="sidenav.toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button> RX Store
+
+        <span class="app-toolbar-filler"></span>
+        <button md-button (click)="isDarkTheme = !isDarkTheme">TOGGLE THEME</button>
+    </md-toolbar>
+
+    <div class="app-content">
+       
+        <router-outlet></router-outlet>
+    </div>
+
+</md-sidenav-layout>
