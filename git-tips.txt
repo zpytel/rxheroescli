@@ -1,0 +1,9 @@
+###to create branch starting from some commit.
+git checkout <commit hash>
+git checkout -b <new branch name>
+
+###to rebase to the master and merge
+git checkout <my branch>
+git rebase master
+git checkout master
+git merge <my branch>
