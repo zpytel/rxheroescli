@@ -7,3 +7,10 @@ git checkout <my branch>
 git rebase master
 git checkout master
 git merge <my branch>
+
+###You can quickly review the changes made to a file using the diff command:
+git diff <commit hash> <filename>
+
+
+###Then to revert a specific file to that commit use the reset command:
+git reset <commit hash> <filename>

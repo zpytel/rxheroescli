@@ -11,6 +11,7 @@ import {HeroListComponent} from './components/hero-list/hero-list.component';
 import {HerosComponent} from './components/heroes/heros.component';
 import {routing} from './routes';
 import { AppComponent } from './app.component';
+import {HeroesService} from './services/heroes.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { AppComponent } from './app.component';
     routing,
     MaterialModule.forRoot()
   ],
-  providers: [],
+  providers: [HeroesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
