@@ -1,0 +1,43 @@
+{
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Magneto"
+    },
+    {
+      "id": 2,
+      "name": "Doctor Strange"
+    },
+    {
+      "id": 3,
+      "name": "Batman"
+    }
+  ],
+  "normal": [
+    {
+      "id": 1,
+      "fname": "zibi",
+      "lname": "pytel"
+    },
+    {
+      "id": 2,
+      "fname": "aneta",
+      "lname": "pytel"
+    },
+    {
+      "id": 3,
+      "fname": "ninka",
+      "lname": "pytel"
+    },
+    {
+      "id": "5",
+      "fname": "jarek",
+      "lname": "pytel"
+    },
+    {
+      "id": "6",
+      "fname": "ala",
+      "lname": "sokol"
+    }
+  ]
+}

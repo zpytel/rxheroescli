@@ -1,0 +1,33 @@
+@import '~@angular/material/core/theming/all-theme';
+
+// NOTE: Theming is currently experimental and not yet publically released!
+
+@include md-core();
+
+$primary: md-palette($md-light-green);
+$accent:  md-palette($md-lime, A200, A100, A400);
+
+$theme: md-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);
+
+.m2app-dark {
+  $dark-primary: md-palette($md-orange, 700, 500, 900);
+  $dark-accent:  md-palette($md-brown, A200, A100, A400);
+  $dark-warn:    md-palette($md-red);
+
+  $dark-theme: md-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+  @include angular-material-theme($dark-theme);
+}
+.m2app-candy{ 
+$candy-app-primary: md-palette($md-orange);
+$candy-app-accent:  md-palette($md-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$candy-app-warn:    md-palette($md-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$candy-app-theme: md-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+@include angular-material-theme($candy-app-theme);
+}
