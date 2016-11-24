@@ -31,6 +31,7 @@ export class HerosComponent implements OnInit {
 
   addHero(name:string){
     this.store.dispatch(this.actions.addHero({id:0,name:name,selected:false}))
+
   }
 
 }
