@@ -19,6 +19,25 @@ export class HeroesService {
       .map((resp:Response)=>resp.json());
     
   }
+  getHero(id:number):Observable<Hero>{
+    return this.http.get(`${this.apiserver}/api/heroes/${id}`)
+    .map((res:Response)=>res.json());
+  }
+
+  saveHero(hero:Hero):any{
+    if(hero.id===0){
+     return this.http.post(`${this.apiserver}/api/heroes`,hero)
+      .map(res=>res.json());
+    }else{
+      return this.http.put(`${this.apiserver}/api/heroes/${hero.id}`,hero)
+      .map(res=>res.json());
+    }
+  }
+
+  delteHero(hero){
+    return this.http.delete(`${this.apiserver}/api/heroes/${hero.id}`)
+    .map(res=>res.json());
+  }
 
 
 }

@@ -4,10 +4,10 @@ import {Action} from '@ngrx/store';
 import {Hero} from '../models/hero';
 import {HeroActions} from '../actions/hero.actions'
 
-export type HeroListState=Hero[];
+type HeroListState=Hero[];
 const initialState:HeroListState=[];
 
-export default function(state=initialState,action:Action):HeroListState{
+export const  HeroReducer=(state=initialState,action:Action):HeroListState =>{
 
     switch(action.type){
         case HeroActions.LOAD_HEROES:
@@ -16,14 +16,16 @@ export default function(state=initialState,action:Action):HeroListState{
         }
         case HeroActions.SAVE_HERO:
         case HeroActions.SAVE_HERO_SUCCESS:{
-            let index=state.findIndex(i=>i.id=action.payload.id)
-            if(index>=0){
-                return [
-                    ...state.slice(0,index),
-                    action.payload,
-                    ...state.slice(index+1)
-                ] 
-            }
+            return [...state,action.payload];
+        }
+        case HeroActions.DELETE_HERO:
+        case HeroActions.DELETE_HERO_SUCCESS:{
+            return state.filter(hero=>{return hero.id !== action.payload.id})
+        }
+        case HeroActions.SELECTED_ITEM:{
+            return state.map(item=>{
+                return item.id===action.payload.id?Object.assign({},item,{selected:true}):Object.assign({},item,{selected:false});
+            })
         }
         default:
         return state;

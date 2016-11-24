@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit,EventEmitter,Output,Input } from '@angular/core';
+import {Hero} from '../../models/hero'
 @Component({
   selector: 'app-hero-form',
   templateUrl: './hero-form.component.html',
@@ -8,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class HeroFormComponent implements OnInit {
 
   constructor() { }
+  @Input()hero:string;
+  @Output()onHeroAdd=new EventEmitter<string>();
+  addHero(name:string){
+   this.onHeroAdd.emit(name)
 
+  }
   ngOnInit() {
   }
 

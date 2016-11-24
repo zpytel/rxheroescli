@@ -11,6 +11,26 @@
     {
       "id": 3,
       "name": "Batman"
+    },
+    {
+      "id": 4,
+      "name": "Koziolek Matolek",
+      "selected": false
+    },
+    {
+      "id": 5,
+      "name": "Bolek",
+      "selected": false
+    },
+    {
+      "id": 6,
+      "name": "Rumcajs",
+      "selected": false
+    },
+    {
+      "id": 7,
+      "name": "Dupek",
+      "selected": false
     }
   ],
   "normal": [

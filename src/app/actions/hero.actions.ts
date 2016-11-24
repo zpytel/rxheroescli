@@ -1,7 +1,8 @@
 import{Action} from '@ngrx/store';
 import {Hero} from '../models/hero';
+import {Injectable} from '@angular/core';
 
-
+@Injectable()
 export class HeroActions{
     static LOAD_HEROES='[Hero] Load Heroes';
     loadHeroes():Action{
@@ -84,5 +85,10 @@ export class HeroActions{
             type: HeroActions.DELETE_HERO_SUCCESS,
             payload: hero
         };
+    }
+    static SELECTED_ITEM='[Hero] Selected item';
+    selectItem(hero:Hero):Action{
+        return {type:HeroActions.SELECTED_ITEM,
+                payload:hero}
     }
 }

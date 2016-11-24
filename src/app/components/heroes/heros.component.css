@@ -1,0 +1,8 @@
+.nav-active {
+  background-color: pink;
+  color: purple;
+}
+
+.nav-active md-icon {
+  color: purple;
+} 
