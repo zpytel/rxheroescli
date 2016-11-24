@@ -5,4 +5,6 @@
   <app-hero-list (onSelected)="selectItem($event)"  [heroes]="heroes"></app-hero-list>
 </md-card>
   
-
+<md-card *ngIf="selected">
+  <app-hero-form [hero]="selected.name" (onHeroAdd)="addHero($event)"></app-hero-form>
+</md-card>
