@@ -27,7 +27,12 @@ export class HerosComponent implements OnInit {
   }
 
   selectItem(item:Hero){
-    this.selected=item;
+    if(!item.selected){
+        this.selected=item;
+    }else{
+        this.selected=null; 
+    }
+    
     this.store.dispatch(this.actions.selectItem(item))
     //this.router.navigate(['/detail/',item.id])
     

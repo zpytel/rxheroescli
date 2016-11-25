@@ -24,7 +24,7 @@ export const  HeroReducer=(state=initialState,action:Action):HeroListState =>{
         }
         case HeroActions.SELECTED_ITEM:{
             return state.map(item=>{
-                return item.id===action.payload.id?Object.assign({},item,{selected:true}):Object.assign({},item,{selected:false});
+                return item.id===action.payload.id?Object.assign({},item,{selected:!item.selected}):Object.assign({},item,{selected:false});
             })
         }
         default:

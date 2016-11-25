@@ -9,6 +9,7 @@ export class HeroFormComponent implements OnInit {
 
   constructor() { }
   @Input()hero:string;
+  @Input()action:string="create"
   @Output()onHeroAdd=new EventEmitter<string>();
   addHero(name:string){
    this.onHeroAdd.emit(name)
