@@ -5,10 +5,6 @@
       "name": "Magneto"
     },
     {
-      "id": 2,
-      "name": "Doctor Strange"
-    },
-    {
       "id": 3,
       "name": "Batman"
     },
@@ -18,18 +14,18 @@
       "selected": false
     },
     {
-      "id": 5,
-      "name": "Bolek",
-      "selected": false
-    },
-    {
       "id": 6,
       "name": "Rumcajs",
       "selected": false
     },
     {
-      "id": 7,
-      "name": "Lolek",
+      "id": 8,
+      "name": "Kloss",
+      "selected": false
+    },
+    {
+      "id": 10,
+      "name": "Aneta Pytel",
       "selected": false
     }
   ],

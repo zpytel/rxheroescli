@@ -37,7 +37,9 @@ export class HerosComponent implements OnInit {
     //this.router.navigate(['/detail/',item.id])
     
   }
-
+  deleteHero(hero:Hero){
+    this.store.dispatch(this.actions.deleteHero(hero))
+  }
   addHero(name:string){
     this.store.dispatch(this.actions.addHero({id:0,name:name,selected:false}))
 

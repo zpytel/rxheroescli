@@ -1,7 +1,7 @@
 
 <md-list>
 <md-list-item *ngFor="let item of heroes|async let i=index" (click)="selectItem(item)" [class.nav-active]="item.selected" >
-  <md-icon>{{item.selected?arrows.selected:arrows.diselected}}</md-icon>{{item.name}} 
+  <span class="w450"><md-icon>{{item.selected?arrows.selected:arrows.diselected}}</md-icon>{{item.name}} </span> <button md-raised-button (click)="deleteHero($event,item)"><md-icon>delete</md-icon></button>
 </md-list-item>
 </md-list>
 
