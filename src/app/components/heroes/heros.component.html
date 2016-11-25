@@ -1,11 +1,11 @@
 <md-card class="app-input-section">
-<app-hero-form [hero]="" [action]="'check circle'" (onHeroAdd)="addHero($event)"></app-hero-form>
+<app-hero-form [hero]="" [action]="'check circle'" [tooltip]="'Create hero'" (onHeroAdd)="addHero($event)"></app-hero-form>
 </md-card>
 <md-card>
   <app-hero-list (onSelected)="selectItem($event)" (onDelete)="deleteHero($event)" [heroes]="heroes"></app-hero-list>
 </md-card>
   
 <md-card *ngIf="selected">
-  <app-hero-form [hero]="selected.name" [action]="'create'" (onHeroAdd)="addHero($event)"></app-hero-form>
+  <app-hero-form [hero]="selected.name" [action]="'create'" [tooltip]="'Update hero'" (onHeroAdd)="addHero($event)"></app-hero-form>
 </md-card>
 
