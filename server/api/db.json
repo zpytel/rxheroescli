@@ -5,28 +5,20 @@
       "name": "Magneto"
     },
     {
-      "id": 3,
-      "name": "Batman"
+      "id": "3",
+      "name": "Batmanee"
     },
     {
       "id": 4,
-      "name": "Koziolek Matolek",
-      "selected": false
+      "name": "Koziolek Matolek"
     },
     {
-      "id": 6,
-      "name": "Rumcajs",
-      "selected": false
-    },
-    {
-      "id": 8,
-      "name": "Kloss",
-      "selected": false
+      "id": "6",
+      "name": "Rumcajs23244"
     },
     {
       "id": 10,
-      "name": "Aneta Pytel",
-      "selected": false
+      "name": "Aneta Pytel"
     }
   ],
   "normal": [

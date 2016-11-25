@@ -35,5 +35,12 @@ export class HerroEffects{
     .switchMap((hero:Hero)=>this.service.delteHero(hero))
     .map((hero:Hero)=>this.heroactions.deleteHeroSuccess(hero))
 
+    @Effect() updateHero=this.action.ofType(HeroActions.UPDATE_HERO)
+    .map(action=>action.payload)
+    .switchMap((hero:Hero)=>this.service.saveHero(hero))
+    .map((hero:Hero)=>this.heroactions.updateHeroSuccess(hero))
+    .map((val)=>this.heroactions.selectItem(val.payload))
+    
+
 
 }

@@ -29,7 +29,7 @@ export class HeroesService {
      return this.http.post(`${this.apiserver}/api/heroes`,hero)
       .map(res=>res.json());
     }else{
-      return this.http.put(`${this.apiserver}/api/heroes/${hero.id}`,hero)
+      return this.http.put(`${this.apiserver}/api/heroes/${hero.id}`,Object.assign({},{id:hero.id,name:hero.name}))
       .map(res=>res.json());
     }
   }

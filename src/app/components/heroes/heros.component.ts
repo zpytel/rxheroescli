@@ -14,7 +14,7 @@ import {Hero} from '../../models/hero';
 })
 export class HerosComponent implements OnInit {
   private heroes:Observable<any>;
-  private selected:Hero;
+  private selected:Hero
   private lennum:number=0
   constructor(private store:Store<Hero[]>,private actions:HeroActions,private router:Router) { 
     this.heroes=store.select("heroes")
@@ -24,24 +24,37 @@ export class HerosComponent implements OnInit {
 
   ngOnInit() {
    this.store.dispatch(this.actions.loadHeroes())
+   
+  }
+  private checkIfSelected(){
+   this.heroes.subscribe((item)=>{ item.map((hero:Hero)=>{
+       if(hero.selected==true){
+        this.selected=hero;
+     }
+    })
+    
+   });
+  }
+  selectItem(item:Hero){
+   this.store.dispatch(this.actions.selectItem(item))
+   this.checkIfSelected();
   }
 
-  selectItem(item:Hero){
-    if(!item.selected){
-        this.selected=item;
-    }else{
-        this.selected=null; 
-    }
-    
-    this.store.dispatch(this.actions.selectItem(item))
-    //this.router.navigate(['/detail/',item.id])
-    
-  }
   deleteHero(hero:Hero){
     this.store.dispatch(this.actions.deleteHero(hero))
+    this.selected=null;
   }
   addHero(name:string){
     this.store.dispatch(this.actions.addHero({id:0,name:name,selected:false}))
+    
+  }
+  updateHero(name:String){
+    if(this.selected){
+      let updatedHero=Object.assign({},this.selected,{name:name});
+    
+      this.store.dispatch(this.actions.updateHero(updatedHero))
+      this.selected=null;
+    }
 
   }
 

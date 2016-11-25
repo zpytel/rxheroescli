@@ -18,6 +18,12 @@ export const  HeroReducer=(state=initialState,action:Action):HeroListState =>{
         case HeroActions.SAVE_HERO_SUCCESS:{
             return [...state,action.payload];
         }
+        case HeroActions.UPDATE_HERO:
+        case HeroActions.UPDATE_HERO_SUCCESS:{
+            return state.map(item => {
+        return item.id === action.payload.id ? Object.assign({}, item, action.payload) : item;
+        })
+        }
         case HeroActions.DELETE_HERO:
         case HeroActions.DELETE_HERO_SUCCESS:{
             return state.filter(hero=>{return hero.id !== action.payload.id})

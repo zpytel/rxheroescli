@@ -54,6 +54,22 @@ export class HeroActions{
             payload: hero
         };
     }
+    static UPDATE_HERO="[Hero] Update Hero";
+    updateHero(hero:Hero):Action{
+     return {
+             type:HeroActions.UPDATE_HERO,
+             payload:hero
+
+     }
+    }
+    static UPDATE_HERO_SUCCESS="[Hero] Update Hero Success";
+    updateHeroSuccess(hero:Hero):Action{
+     return {
+             type:HeroActions.UPDATE_HERO_SUCCESS,
+             payload:hero
+
+     }
+    }
 
     static ADD_HERO = '[Hero] Add Hero';
     addHero(hero:Hero): Action {

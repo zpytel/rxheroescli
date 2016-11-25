@@ -6,6 +6,6 @@
 </md-card>
   
 <md-card *ngIf="selected">
-  <app-hero-form [hero]="selected.name" [action]="'create'" [tooltip]="'Update hero'" (onHeroAdd)="addHero($event)"></app-hero-form>
+  <app-hero-form [hero]="selected.name" [action]="'create'" [tooltip]="'Update hero'" (onHeroAdd)="updateHero($event)"></app-hero-form>
 </md-card>
 
