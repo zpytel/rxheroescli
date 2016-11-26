@@ -24,20 +24,27 @@ export class HerosComponent implements OnInit {
 
   ngOnInit() {
    this.store.dispatch(this.actions.loadHeroes())
-   
+   this.checkIfSelected();
   }
   private checkIfSelected(){
-   this.heroes.subscribe((item)=>{ item.map((hero:Hero)=>{
+   this.heroes.startWith([{id:0,name:"",selected:false}]).subscribe((item)=>{ if(item){item.map((hero:Hero)=>{
+       
        if(hero.selected==true){
         this.selected=hero;
+       
      }
+      
     })
     
-   });
+   }});
   }
   selectItem(item:Hero){
+    if(!!item.selected){
+      this.selected=null;
+    }
+    
    this.store.dispatch(this.actions.selectItem(item))
-   this.checkIfSelected();
+    
   }
 
   deleteHero(hero:Hero){
