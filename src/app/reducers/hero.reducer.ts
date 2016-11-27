@@ -46,11 +46,13 @@ export const  HeroReducer=(state=initialState,action:Action):State =>{
         }
         case HeroActions.UPDATE_HERO:
         case HeroActions.UPDATE_HERO_SUCCESS:{
-            return Object.assi(state.entities[action.payload.id];
+            
+            return {
+                ids:state.ids,
+                entities:state.entities[action.payload.id]
+            }
 
-            return state.entities[action.payload.id].map(item => {
-        return item.id === action.payload.id ? Object.assign({}, item, action.payload) : item;
-        })
+        
         }
         case HeroActions.DELETE_HERO:
         case HeroActions.DELETE_HERO_SUCCESS:{
