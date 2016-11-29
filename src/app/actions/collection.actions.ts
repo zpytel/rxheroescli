@@ -22,7 +22,7 @@ export const ActionTypes = {
 export class AddHeroAction implements Action {
   type = ActionTypes.ADD_HERO;
 
-  constructor(public payload: Hero) { }
+  constructor(public payload: Hero) {  }
 }
 
 export class AddHeroSuccessAction implements Action {

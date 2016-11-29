@@ -16,12 +16,10 @@ const initialState:State={
     selectedHeroId:null
 }
 
-export function reducer (state=initialState,action:hero.Actions|collection.Actions):State {
-
+export function reducer (state=initialState,action: hero.Actions|collection.Actions):State {
     switch(action.type){
         case hero.ActionTypes.SEARCH_COMPLETE:
         case collection.ActionTypes.LOAD_SUCCESS:{
-
             const heroes=action.payload;
             const heroesIds=heroes.map(hero=>hero.id);
             const heroesEntities=heroes.reduce((entities:{[id:number]:Hero},hero:Hero)=>{
@@ -35,36 +33,25 @@ export function reducer (state=initialState,action:hero.Actions|collection.Actio
                 selectedHeroId:state.selectedHeroId
             };
         }
-        case HeroActions.SAVE_HERO:
-        case HeroActions.SAVE_HERO_SUCCESS:{
+        case hero.ActionTypes.LOAD:{
             const hero=action.payload;
-            const heroEntity={[hero.id]:hero}
+            if (state.ids.indexOf(hero.id)){
+              return state;
+            }
             return {
                 ids:[...state.ids,hero.id],
-                entities:Object.assign({},state.entities,heroEntity),
+                entities:Object.assign({},state.entities,{[hero.id]:hero}),
                 selectedHeroId:state.selectedHeroId
             }
         }
-        case HeroActions.UPDATE_HERO:
-        case HeroActions.UPDATE_HERO_SUCCESS:{
-            const updateentity=state.entities[action.payload.id]=action.payload;
-            return {
+        case hero.ActionTypes.SELECT:{
+            return{
                 ids:state.ids,
-                entities:Object.assign({},updateentity),
+                entities:state.entities,
                 selectedHeroId:state.selectedHeroId
             }
-
-        
         }
-        case HeroActions.DELETE_HERO:
-        case HeroActions.DELETE_HERO_SUCCESS:{
-            return state.entities.filter(hero=>{return hero.id !== action.payload.id})
-        }
-        case HeroActions.SELECTED_ITEM:{
-            return state.map(item=>{
-                return item.id===action.payload.id?Object.assign({},item,{selected:!item.selected}):Object.assign({},item,{selected:false});
-            })
-        }
+       
         default:
         return state;
     }
