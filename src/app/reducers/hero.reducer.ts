@@ -2,7 +2,8 @@ import {Action} from '@ngrx/store';
 
 
 import {Hero} from '../models/hero';
-import {HeroActions} from '../actions/hero.actions'
+import * as hero from '../actions/hero.actions'
+import * as collection from '../actions/collection.actions';
 
 export interface State{
 ids:number[],
@@ -15,11 +16,11 @@ const initialState:State={
     selectedHeroId:null
 }
 
-export const  HeroReducer=(state=initialState,action:Action):State =>{
+export function reducer (state=initialState,action:hero.Actions|collection.Actions):State {
 
     switch(action.type){
-        case HeroActions.LOAD_HEROES:
-        case HeroActions.LOAD_HEROES_SUCCESS:{
+        case hero.ActionTypes.SEARCH_COMPLETE:
+        case collection.ActionTypes.LOAD_SUCCESS:{
 
             const heroes=action.payload;
             const heroesIds=heroes.map(hero=>hero.id);
@@ -46,17 +47,18 @@ export const  HeroReducer=(state=initialState,action:Action):State =>{
         }
         case HeroActions.UPDATE_HERO:
         case HeroActions.UPDATE_HERO_SUCCESS:{
-            
+            const updateentity=state.entities[action.payload.id]=action.payload;
             return {
                 ids:state.ids,
-                entities:state.entities[action.payload.id]
+                entities:Object.assign({},updateentity),
+                selectedHeroId:state.selectedHeroId
             }
 
         
         }
         case HeroActions.DELETE_HERO:
         case HeroActions.DELETE_HERO_SUCCESS:{
-            return state.filter(hero=>{return hero.id !== action.payload.id})
+            return state.entities.filter(hero=>{return hero.id !== action.payload.id})
         }
         case HeroActions.SELECTED_ITEM:{
             return state.map(item=>{

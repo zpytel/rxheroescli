@@ -1,110 +1,45 @@
 import{Action} from '@ngrx/store';
 import {Hero} from '../models/hero';
-import {Injectable} from '@angular/core';
+import {type} from '../utils/utils'
 
-@Injectable()
-export class HeroActions{
-    static LOAD_HEROES='[Hero] Load Heroes';
-    loadHeroes():Action{
-        return {type:HeroActions.LOAD_HEROES};
-    }
-    static LOAD_HEROES_SUCCESS = '[Hero] Load Heroes Success';
-    loadHeroesSuccess(heroes:Hero[]): Action {
-        return {
-            type: HeroActions.LOAD_HEROES_SUCCESS,
-            payload: heroes
-        };
-    }
 
-     static GET_HERO = '[Hero] Get Hero';
-    getHero(id:number): Action {
-        return {
-            type: HeroActions.GET_HERO,
-            payload: id
-        };
-    }
+export const ActionTypes = {
+  SEARCH:           type('[Hero] Search'),
+  SEARCH_COMPLETE:  type('[Hero] Search Complete'),
+  LOAD:             type('[Hero] Load'),
+  SELECT:           type('[Hero] Select'),
+};
 
-    static GET_HERO_SUCCESS = '[Hero] Get Hero Success';
-    getHeroSuccess(hero:Hero): Action {
-        return {
-            type: HeroActions.GET_HERO_SUCCESS,
-            payload: hero
-        };
-    }
+export class SearchAction implements Action{
+    type=ActionTypes.SEARCH;
+    
+    constructor(public payload:string){}
+}
+export class SearchCompleteAction implements Action{
+    type=ActionTypes.SEARCH_COMPLETE;
 
-    static RESET_BLANK_HERO = '[Hero] Reset Blank Hero';
-    resetBlankHero(): Action {
-        return {
-            type: HeroActions.RESET_BLANK_HERO
-        };
-    }
+    constructor(public payload:Hero[]){}
+}
+export class LoadAction implements Action{
+    type=ActionTypes.LOAD;
 
-    static SAVE_HERO = '[Hero] Save Hero';
-    saveHero(hero:Hero): Action {
-        return {
-            type: HeroActions.SAVE_HERO,
-            payload: hero
-        };
-    }
+    constructor(public payload:Hero ){
 
-    static SAVE_HERO_SUCCESS = '[Hero] Save Hero Success';
-    saveHeroSuccess(hero:Hero): Action {
-        return {
-            type: HeroActions.SAVE_HERO_SUCCESS,
-            payload: hero
-        };
-    }
-    static UPDATE_HERO="[Hero] Update Hero";
-    updateHero(hero:Hero):Action{
-     return {
-             type:HeroActions.UPDATE_HERO,
-             payload:hero
-
-     }
-    }
-    static UPDATE_HERO_SUCCESS="[Hero] Update Hero Success";
-    updateHeroSuccess(hero:Hero):Action{
-     return {
-             type:HeroActions.UPDATE_HERO_SUCCESS,
-             payload:hero
-
-     }
-    }
-
-    static ADD_HERO = '[Hero] Add Hero';
-    addHero(hero:Hero): Action {
-        return {
-            type: HeroActions.ADD_HERO,
-            payload: hero
-        };
-    }
-
-    static ADD_HERO_SUCCESS = '[Hero] Add Hero Success';
-    addHeroSuccess(hero:Hero): Action {
-        return {
-            type: HeroActions.ADD_HERO_SUCCESS,
-            payload: hero
-        };
-    }
-
-    static DELETE_HERO = '[Hero] Delete Hero';
-    deleteHero(hero:Hero): Action {
-        return {
-            type: HeroActions.DELETE_HERO,
-            payload: hero
-        };
-    }
-
-    static DELETE_HERO_SUCCESS = '[Hero] Delete Hero Success';
-    deleteHeroSuccess(hero:Hero): Action {
-        return {
-            type: HeroActions.DELETE_HERO_SUCCESS,
-            payload: hero
-        };
-    }
-    static SELECTED_ITEM='[Hero] Selected item';
-    selectItem(hero:Hero):Action{
-        return {type:HeroActions.SELECTED_ITEM,
-                payload:hero}
     }
 }
+
+export class SelectAction implements Action{
+    type=ActionTypes.SELECT;
+
+    constructor(public payload:Number){
+
+    }
+}
+
+export type Actions=
+  SearchAction|
+  SearchCompleteAction|
+  LoadAction|
+  SelectAction;
+
+
